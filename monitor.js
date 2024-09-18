@@ -62,7 +62,7 @@ async function initializeBrowser(proxyPort) {
 
     browser.on('disconnected', async () => {
       console.log('Browser disconnected, attempting to reconnect...');
-      await initializeBrowser(proxyPort); // Retry browser initialization
+      await initializeBrowser(proxyPort);
     });
 
     page = await browser.newPage();
@@ -70,7 +70,7 @@ async function initializeBrowser(proxyPort) {
     await page.setViewport(mobileViewport);
   } catch (error) {
     console.error('Error initializing browser:', error);
-    process.exit(1); // Exit process if browser initialization fails
+    process.exit(1);
   }
 }
 
@@ -149,7 +149,7 @@ async function run() {
           }
         }
 
-        const currentUrl = `https://replit.com/@${process.env.REPL_OWNER}/${process.env.REPL_SLUG}`;
+        const currentUrl = "https://replit.com/@Jonellmagallanes10/Bot-Botpack-With-Hanabishi-Washing-Machine";
         await page.goto(currentUrl, { waitUntil: 'networkidle2' });
 
         await page.screenshot({ path: screenshotPath, type: 'jpeg' });

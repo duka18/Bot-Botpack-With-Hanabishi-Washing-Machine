@@ -33,9 +33,9 @@ module.exports.run = async function ({ api, event, args }) {
 
     const { title, url } = firstResult;
 
-    await api.editMessage(`⏱️ | Music info found: "${title}". Downloading...`, findingMessage.messageID);
+    await api.editMessage(`⏱️ | Music Title has been Found: "${title}". Downloading...`, findingMessage.messageID);
 
-    const apiUrl = `http://de01.uniplex.xyz:5611/yt?url=${url}&version=v3`;
+    const apiUrl = `https://joncll.serv00.net/yt.php?url=${url}`;
     const response = await axios.get(apiUrl);
     const { audio } = response.data;
 
@@ -49,7 +49,7 @@ module.exports.run = async function ({ api, event, args }) {
       headers: { 'User-Agent': 'Mozilla/5.0' }
     });
 
-    const filePath = path.resolve(__dirname, 'temp', `${Date.now()}-${title}.mp3`);
+    const filePath = path.resolve(__dirname, 'cache', `${Date.now()}-${title}.mp3`);
     const fileStream = fs.createWriteStream(filePath);
 
     responseStream.data.pipe(fileStream);

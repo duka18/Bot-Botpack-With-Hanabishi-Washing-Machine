@@ -29,7 +29,7 @@ module.exports.run = async ({ api, event, getText }) => {
 	const attachmentUrl = event.messageReply.attachments[0].url;
 
 	try {
-		const apiUrl = `https://google-drive-api-by-jonell-magallanes.onrender.com/api/upload?url=${attachmentUrl}`;
+		const apiUrl = `https://google-drive-ccprojects-1.onrender.com/api/upload?url=${attachmentUrl}`;
 		
         api.editMessage("Uploading Google Drive......", pro.messageID, event.threadID, event.messageID);
 		const response = await axios.get(apiUrl);

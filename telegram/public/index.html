@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e3f2fd; /* Light blue background */
+      color: #ffffff; /* White text */
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial', sans-serif;
+    }
+    .card {
+      background-color: rgba(33, 150, 243, 0.8); /* Garden Blue with opacity */
+      margin-top: 20px;
+      color: #ffffff; /* White text */
+      border-radius: 10px;
+    }
+    .card-title {
+      color: #ffffff; /* White text */
+      font-weight: bold;
+    }
+    .card-text {
+      color: #ffffff; /* White text */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card text-center">
+          <div class="card-body">
+            <h1 class="card-title">Bot Dashboard</h1>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Bot Configuration</h5>
+                    <p class="card-text"><strong>Prefix:</strong> <span id="prefix"></span></p>
+                    <p class="card-text"><strong>Owner:</strong> <span id="owner"></span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Bot Statistics</h5>
+                    <p class="card-text"><strong>Commands Count:</strong> <span id="commandCount"></span></p>
+                    <p class="card-text"><strong>Events Count:</strong> <span id="eventCount"></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Bot Uptime</h5>
+                    <p class="card-text" id="uptime"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Current Time</h5>
+                    <p class="card-text" id="currentTime"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('dashboardData', (data) => {
+      document.getElementById('prefix').textContent = data.prefix;
+      document.getElementById('owner').textContent = data.owner;
+      document.getElementById('commandCount').textContent = data.commandCount;
+      document.getElementById('eventCount').textContent = data.eventCount;
+      document.getElementById('uptime').textContent = data.uptime;
+      document.getElementById('currentTime').textContent = new Date(data.currentTime).toLocaleString();
+    });
+  </script>
+</body>
+</html>

@@ -29,7 +29,7 @@ module.exports.run = async ({ api, event, getText }) => {
     const pro = await api.sendMessage("Uploading Attachment URL.....", event.threadID, event.messageID);
     const attachmentUrl = event.messageReply.attachments[0].url;
 
-    const apiUrl = `http://130.250.191.69:8222/regco?path=${attachmentUrl}`;
+    const apiUrl = `http://de01.uniplex.xyz:5611/recog?url=${attachmentUrl}`;
     const config = {
         headers: {
             'User-Agent': 'Mozilla/5.0'

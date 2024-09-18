@@ -1,8 +1,15 @@
 const cron = require('node-cron');
-const logger = require('./utils/log');
 const axios = require("axios");
-const fs = require('fs-extra');
-const PREFIX = true;
+
+const fetchWeather = async () => {
+  try {
+    const response = await axios.get('https://ccexplorerapisjonell.vercel.app/api/weather');
+    const { synopsis, issuedAt, temperature, humidity } = response.data;
+    return `Weather Update:\n\n${synopsis}\n\nIssued at: ${issuedAt}\nMax Temperature: ${temperature.max.value} at ${temperature.max.time}\nMin Temperature: ${temperature.min.value} at ${temperature.min.time}\nMax Humidity: ${humidity.max.value} at ${humidity.max.time}\nMin Humidity: ${humidity.min.value} at ${humidity.min.time}`;
+  } catch (error) {
+    return 'Unable to fetch weather information at the moment.';
+  }
+};
 
 module.exports = async ({ api }) => {
   const config = {
@@ -43,16 +50,25 @@ module.exports = async ({ api }) => {
       {
         cronTime: '0 22 * * *',
         messages: [`Good night! Have a restful sleep.`],
+      },
+      {
+        cronTime: '0 7 * * *',
+        messages: async () => `Good morning! Have a great day ahead!\n\n${await fetchWeather()}`,
+      },
+      {
+        cronTime: '0 19 * * *',
+        messages: async () => `Good evening! Relax and enjoy your evening.\n\n${await fetchWeather()}`,
       }
     ]
   };
 
   config.greetings.forEach((greeting) => {
-    cron.schedule(greeting.cronTime, () => {
+    cron.schedule(greeting.cronTime, async () => {
+      const message = typeof greeting.messages[0] === 'function' ? await greeting.messages[0]() : greeting.messages[0];
       api.getThreadList(20, null, ['INBOX']).then((list) => {
         list.forEach((thread) => {
           if (thread.isGroup) {
-            api.sendMessage(greeting.messages[0], thread.threadID).catch((error) => {
+            api.sendMessage(message, thread.threadID).catch((error) => {
               console.log(`Error sending message: ${error}`, 'AutoGreet');
             });
           }
@@ -71,8 +87,7 @@ module.exports = async ({ api }) => {
       api.getThreadList(20, null, ['INBOX']).then((list) => {
         list.forEach((thread) => {
           if (thread.isGroup) {
-            // Send restart message
-            api.sendMessage("🔃 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗣𝗿𝗼𝗰𝗲𝘀𝘀\n━━━━━━━━━━━━━━━━━━\nBot is restarting...", thread.threadID).then(() => {
+            api.sendMessage("🔃 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀\n━━━━━━━━━━━━━━━━━━\nBot is restarting...", thread.threadID).then(() => {
               console.log(`Restart message sent to thread`, 'Auto Restart');
             }).catch((error) => {
               console.log(`Error sending restart message to thread ${error}`, 'Auto Restart');

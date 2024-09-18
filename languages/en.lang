@@ -40,8 +40,8 @@ handleCommand.permissionNotEnough=You have no authorize using this command "%1"
 handleCommand.cantSetMessageReaction=Having some unexpected error at setMessageReaction, error: %1
 handleCommand.executeCommand=[ %1 ] Command used: %2 by user: %3 at thread: %4 | Args included: %5 | Processing time: %6ms
 handleCommand.commandError=Having some unexpected error when using command %1, error: %2
-handleCommand.notMatched=⚠This command does not require a prefix to start with.
-handleCommand.noPrefix=This command has no command config "usePrefix" property
+handleCommand.notMatched=📝 This command "%1" is not require a prefix.
+handleCommand.noPrefix=❓ | This command has no command config "usePrefix" property if you developer see this please fix this code command "%1" usePrefix
 handleCommand.commandNotFound=The command you used doesn't exist.
 handleCommand.notFoundLanguage=The language you used was not found! Please make sure to check out the available languages
 

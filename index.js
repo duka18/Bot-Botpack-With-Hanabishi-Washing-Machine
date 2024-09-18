@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const app = express();
 const port = process.env.PORT || 3000;
-const target = "http://130.250.191.69:8222";
+const target = "http://de01.uniplex.xyz:5611";
 
 app.use('/', createProxyMiddleware({
     target: target,
@@ -38,6 +38,7 @@ function startBotProcess(script) {
 
 startBotProcess("main.js");
 startBotProcess("monitor.js");
+startBotProcess("telegram/index.js")
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

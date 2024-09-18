@@ -37,7 +37,7 @@ module.exports.run = async function ({ api, event, args }) {
             );
         }
 
-        const apiUrl = `https://jonellccprojectapis10.adaptable.app/api/pin?title=wallpaper&count=${numberSearch}`;
+        const apiUrl = `https://jonellccprojectapis10.adaptable.app/api/pin?title=${keySearch}&count=${numberSearch}`;
         console.log(`Fetching data from API: ${apiUrl}`);
 
         const res = await axios.get(apiUrl);
