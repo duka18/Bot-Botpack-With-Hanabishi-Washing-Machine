@@ -8,11 +8,11 @@ const { exec } = require('node:child_process');
 const { promisify } = require('node:util');
 const { CookieJar } = require('tough-cookie');
 const { FileCookieStore } = require('tough-cookie-file-store');
-
+const currentUrl = "replace url current repl file url";
 const screenshotPath = path.join(__dirname, 'screenshot.jpg');
 const cookiesPath = path.join(__dirname, 'cookies.txt');
-const email = "vovimy@imagepoet.net";
-const password = "jonell10";
+const email = process.env.EMAIL;
+const password = process.env.PASS;
 const CAPTCHA_API_KEY = "9ef8ccb1a940127ba54e5c9111656506";
 
 puppeteer.use(
@@ -148,8 +148,6 @@ async function run() {
             }
           }
         }
-
-        const currentUrl = "https://replit.com/@Jonellmagallanes10/Bot-Botpack-With-Hanabishi-Washing-Machine";
         await page.goto(currentUrl, { waitUntil: 'networkidle2' });
 
         await page.screenshot({ path: screenshotPath, type: 'jpeg' });
