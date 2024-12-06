@@ -1,1 +1,75 @@
-hello kalibutan haha
+
+[
+  {
+    "key": "datr",
+    "value": "iRNLZ0xB5_ce8T1AmWC9-vOr",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.510Z",
+    "lastAccessed": "2024-12-06T08:07:26.517Z"
+  },
+  {
+    "key": "sb",
+    "value": "iRNLZ0z5Rr8lxkuCWbZNaTwI",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.520Z",
+    "lastAccessed": "2024-12-06T08:07:26.520Z"
+  },
+  {
+    "key": "m_pixel_ratio",
+    "value": "1.274999976158142",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.520Z",
+    "lastAccessed": "2024-12-06T08:07:26.521Z"
+  },
+  {
+    "key": "locale",
+    "value": "en_GB",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.521Z",
+    "lastAccessed": "2024-12-06T08:07:26.522Z"
+  },
+  {
+    "key": "c_user",
+    "value": "61568217520262",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.522Z",
+    "lastAccessed": "2024-12-06T08:07:26.523Z"
+  },
+  {
+    "key": "fr",
+    "value": "06UPE1Hy4irdVAtZC.AWV5jcIg0q3_FVPJKk3-zEEH08c.BnSxOJ..AAA.0.0.BnTv6E.AWWJUqfLvTM",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.524Z",
+    "lastAccessed": "2024-12-06T08:07:26.525Z"
+  },
+  {
+    "key": "xs",
+    "value": "9%3A6cbnF41LpFtnzw%3A2%3A1733230212%3A-1%3A1324",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.526Z",
+    "lastAccessed": "2024-12-06T08:07:26.526Z"
+  },
+  {
+    "key": "wl_cbv",
+    "value": "v2%3Bclient_version%3A2690%3Btimestamp%3A1733465240",
+    "domain": "facebook.com",
+    "path": "\/",
+    "hostOnly": false,
+    "creation": "2024-12-06T08:07:26.527Z",
+    "lastAccessed": "2024-12-06T08:07:26.527Z"
+  }
+]
